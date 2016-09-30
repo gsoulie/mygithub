@@ -1,0 +1,31 @@
+.container {
+    background-color: #5E5B95//#34495E
+}
+.thb {
+    position: absolute;
+    top: 20%;
+    width: 80%;
+    left: 10px;
+    right: 10px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+.item-input {
+    background-color: transparent;
+    color: #ffffff;
+}
+.submitBtn {
+    width: 100%;
+    margin-top: 20px;
+    height: 40px;
+    border-radius: 20px;
+}
+.cform {
+    position: absolute;
+    bottom: 20%;
+    left: 50px;
+    right: 50px;
+}
+$label-md-text-color-focused: #ffffff;
+$text-input-md-highlight-color: #ffffff;

@@ -1,0 +1,100 @@
+<ion-header>
+  <ion-navbar color="githubvert">
+    <ion-title>{{username}}</ion-title>  
+     <ion-buttons end>
+        <button ion-button icon-only (click)="goToRoot()">
+          <ion-icon name="search"></ion-icon>
+        </button>
+      </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding class="main">
+ <ion-card>
+    <ion-item>
+      <ion-avatar item-left>
+        <img [src]="user.avatar_url">
+      </ion-avatar>
+      <button ion-button clear item-right (click)="goToRepo()">
+        <ion-icon color="githubviolet" name="logo-github" item-center></ion-icon>
+      </button>
+      <h2>{{user.name}}</h2>
+      <p>{{user.login}}</p>
+    </ion-item>
+
+    <ion-list>
+      <ion-item>
+        <ion-label>Followers</ion-label>
+        <ion-badge item-right color="githubvert">{{user.followers}}</ion-badge>
+      </ion-item>
+       <ion-item>
+        <ion-label>Following</ion-label>
+        <ion-badge item-right color="githubvert">{{user.following}}</ion-badge>
+      </ion-item>
+       <ion-item>
+        <ion-label>Repos</ion-label>
+        <ion-badge item-right color="githubvert">{{user.public_repos}}</ion-badge>
+      </ion-item>
+       <ion-item>
+        <ion-label>Gists</ion-label>
+        <ion-badge item-right color="githubvert">{{user.public_gists}}</ion-badge>
+      </ion-item>
+    </ion-list>
+    <ion-item>
+      <ion-icon color="githubviolet" name="home" item-left></ion-icon><p>{{user.company || "None"}}</p>
+    </ion-item>
+    <ion-item>
+      <ion-icon color="githubviolet" name="logo-wordpress" item-left></ion-icon><p><a href="{{user.blog}}">{{user.blog}}</a></p>
+    </ion-item>
+    <ion-item>
+      <ion-icon color="githubviolet" name="pin" item-left></ion-icon><p>{{user.location}}</p>
+    </ion-item>
+  </ion-card>
+
+  <ion-card>
+    <ion-card-header><b>Repos</b></ion-card-header>
+    <ion-card-content>
+      <ion-list>
+        <button ion-item *ngFor="let rep of repos" (click)="openRepo(rep.html_url,rep.full_name)">
+          <p id="reposTitle">{{rep.full_name}}</p>
+          <p>{{rep.description}}</p>
+        </button>
+      </ion-list>
+    </ion-card-content>
+</ion-card>
+<ion-fab right bottom>
+  <!--<button ion-fab fab-right fab-bottom color="githubvert" class="btn" (click)="openMenu()" icon-only>
+    <ion-icon name="menu"></ion-icon>
+  </button>-->
+  <ion-grid class="grid" style="width:100px">
+  <ion-row>
+    <ion-col style="height:80px">
+      <ion-fab>
+        <button ion-fab fab-left color="githubvert" (click)="close()" icon-only [style.display]="menuIsOpen ? 'inherit':'none'">
+          <ion-icon name="star"></ion-icon>
+        </button>
+      </ion-fab>
+    </ion-col>
+  </ion-row>
+  <ion-row>
+    <ion-col style="height:80px">
+      <ion-fab>
+        <button ion-fab fab-left color="githubvert" (click)="close()" icon-only [style.display]="menuIsOpen ? 'inherit':'none'">
+          <ion-icon name="trash"></ion-icon>
+        </button>
+      </ion-fab>
+    </ion-col>
+  </ion-row>
+  <ion-row>
+    <ion-col style="height:80px">
+      <ion-fab>
+        <button ion-fab fab-left color="githubvert" icon-only (click)="openMenu()">
+          <ion-icon name="menu"></ion-icon>
+        </button>
+      </ion-fab>
+    </ion-col>
+  </ion-row>
+</ion-grid>
+</ion-fab>
+
+</ion-content>
